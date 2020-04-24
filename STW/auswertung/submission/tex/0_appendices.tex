@@ -1,0 +1,308 @@
+\section{\gnuplot{} Quellcode zur Auswertung von Teilversuch 1}
+	\label{appdx:gnuplotTV1}
+
+	\gnuplot{} Code für Abbildung \ref{fig:tvone-plot}
+	{  
+        % % Surpress "errors" in minted
+        % https://tex.stackexchange.com/a/289068
+        \renewcommand{\fcolorbox}[4][]{#4}
+        \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{gnuplot}
+#!/usr/bin/env gnuplot
+# ver >= 5.2
+
+set term epslatex color size 6in, 4in
+set output "tv1-plot.tex"
+set decimalsign locale 'de_DE.UTF-8'
+
+set title "Mikrofonspannung als Funktion der Position"
+set xlabel "Position auf optischen Schiene $x$ ($\\si{\\milli\\meter}$)"
+set ylabel "Mikrofonspannung $U_\\text{eff}$ ($\\si{\\milli\\volt}$)"
+
+set mxtics
+set mytics
+set samples 10000
+
+A = 45
+b = 95.2
+lambda = 134.75
+c = 2
+f(x) = abs(A*sin(((2*pi)/lambda)*(x - b))) + c
+
+# (x, y, xdelta, ydelta)
+fit f(x) "tv1.dat" u 1:2:(0.5):3 xyerrors via A,lambda,b,c
+
+# Anomalie
+set style fill solid 0.0 border 7
+set object circle at 87.5, 25 size 2 fc rgb 'black'
+set label "\\textcolor{red}{\\scriptsize Anomalie}" at 85,27 font ',9'
+
+# Linien
+array oneleft[5]   = [93.5, 98.5, 89, 104.5, 87.5]
+array oneright[5]  = [97, 89.5, 102, 84.5, 107]
+array lastleft[5]  = [232, 225.5, 237.522, 220, 242]
+array lastright[5] = [228, 234.5, 223, 237.5, 217.5]
+set style fill solid 1.0 border -1
+do for [i=1:5] {
+    why = i*5
+    onemw  = (oneleft[i] + oneright[i])/2
+    lastmw = (lastleft[i] + lastright[i])/2
+
+    #(x, y)
+    set arrow from oneleft[i],why to oneright[i],why nohead lc rgb 'dark-green' # dt 3
+    set arrow from lastleft[i],why to lastright[i],why nohead lc rgb 'dark-green' # dt 3
+
+    set object circle at onemw,why size 0.4 fc rgb 'black'
+    set object circle at lastmw,why size 0.4 fc rgb 'black'
+}
+
+set arrow from b,0 to b,25 nohead lc rgb 'orange'
+set arrow from b+lambda,0 to b+lambda,25 nohead lc rgb 'orange'
+
+set yrange [0:56]
+set key top right spacing 1.8
+
+titel = "$\\abs{".gprintf("%.5f", A)."\\sin\\left[\\frac{2\\pi}{".gprintf("%.5f", lambda)."}\\left(x - ".gprintf("%.5f", b)."\\right)\\right]} + ".gprintf("%.5f", c)."$"
+plot f(x) title titel lc rgb 'dark-magenta', \
+    "tv1.dat" u 1:2:(0.5):3 with xyerrorbars title "Messpunkte" pointtype 0 lc rgb 'dark-goldenrod', \
+    "<echo 87,5 25,0" u 1:2:(0.5):(0.2) with xyerrorbars notitle pointtype 0 lc rgb 'red'
+        \end{minted}
+    }
+    mit \texttt{tv1.dat}:
+    \begin{multicols}{3}
+        \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
+# x/mm  U/mV    delU
+63,5    42,9    0,1
+70,0    40,3    0,1
+80,0    27,9    0,1
+90,0    9,4     0,1
+100,0   12,8    0,1
+110,0   31,0    0,1
+120,0   42,2    0,1
+130,0   45,1    0,1
+140,0   39,7    0,1
+150,0   26,2    0,1
+160,0   7,0     0,1
+170,0   15,5    0,1
+180,0   33,2    0,1
+190,0   42,6    0,1
+200,0   44,1    0,1
+210,0   36,4    0,1
+220,0   21,0    0,1
+230,0   2,0     0,1
+240,0   20,7    0,1
+250,0   36,3    0,1
+260,0   44,2    0,1
+270,0   43,1    0,1
+280,0   33,3    0,1
+93,5    5,0     0,2
+98,5    10,0    0,2
+89,0    15,0    0,2
+104,5   20,0    0,2
+# 87,5  25,0    0,2
+97,0    5,0     0,2
+89,5    10,0    0,2
+102,0   15,0    0,2
+84,5    20,0    0,2
+107,0   25,0    0,2
+232,0   5,0     0,2
+225,5   10,0    0,2
+237,5   15,0    0,2
+220,0   20,0    0,2
+242,0   25,0    0,2
+228,0   5,0     0,2
+234,5   10,0    0,2
+223,0   15,0    0,2
+237,5   20,0    0,2
+217,5   25,0    0,2
+        \end{minted}
+    \end{multicols}
+    \vspace{-\baselineskip}
+    Rohausgabe
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
+degrees of freedom    (FIT_NDF)                        : 38
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.93411
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.7408
+p-value of the Chisq distribution (FIT_P)              : 6.03961e-14
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+A               = 43.0608          +/- 0.5247       (1.219%)
+lambda          = 135.638          +/- 0.3153       (0.2324%)
+b               = 94.4062          +/- 0.2371       (0.2511%)
+c               = 1.62297          +/- 0.4747       (29.25%)
+    \end{minted}
+\newpage
+\section{\texttt{python} Quellcode zur Berechnung der Mittelwert und Standardabweichung im Teilversuch 1}
+    \label{appdx:pythontv1}
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{python}
+#!/usr/bin/env python3
+
+import numpy as np
+
+x12 = np.array([95.25, 94.00, 95.50, 94.50])
+x34 = np.array([230.00, 230.00, 230.26, 228.75, 229.75])
+
+def sab(arr, mw):
+    return np.sqrt((np.sum((arr - mw)**2))/(arr.size - 1))
+
+x12mw = np.mean(x12)
+x12ab = sab(x12, x12mw)
+x34mw = np.mean(x34)
+x34ab = sab(x34, x34mw)
+
+print("x12 = ", x12mw, " +- ", x12ab)
+print("x34 = ", x34mw, " +- ", x34ab)
+    \end{minted}
+    Rohausgabe
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{python}
+x12 =  94.8125  +-  0.688446318411
+x34 =  229.752  +-  0.588447108923
+    \end{minted}
+
+\section{\gnuplot{} Quellcode zur Auswertung von Teilversuch 3}
+    \label{appdx:gnuplotTV3}
+    \gnuplot{} Code für Abbildung \ref{fig:tvthree-plot}
+    {  
+        % % Surpress "errors" in minted
+        % https://tex.stackexchange.com/a/289068
+        \renewcommand{\fcolorbox}[4][]{#4}
+        \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{gnuplot}
+#!/usr/bin/env gnuplot
+
+set term epslatex color size 6in, 4in
+set output "tv3-plot.tex"
+set decimalsign locale 'de_DE.UTF-8'
+
+set title "Oberschwingungen"
+set xlabel "Ordnungszahl $n$"
+set ylabel "Frequenz $f_n$ ($\\si{\\hertz}$)"
+
+set mxtics
+set mytics
+
+set key right bottom
+
+f(x) = m*x + c
+
+# (x, y, xdelta, ydelta)
+fit f(x) "tv3.dat" u 1:2:(1) yerrors via m,c
+
+titel = gprintf("%.6f", m)."n + ".gprintf("%.6f", c)
+plot f(x) title titel lc rgb 'dark-magenta', \
+    "tv3.dat" u 1:2:(1) with yerrorbars title "Messpunkte" lc rgb 'dark-goldenrod'
+        \end{minted}
+    }
+    mit \texttt{tv3.dat}:
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
+# n f/Hz    Ueff/mV
+0   168     3,36
+1   502     22,10
+2   837     57,70
+3   1171    31,07
+4   1510    21,70
+5   1843    22,48
+6   2188    22,93
+7   2541    24,80
+8   2876    13,20
+9   3210    10,10
+10  3554    6,76
+    \end{minted}
+    Rohausgabe
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
+degrees of freedom    (FIT_NDF)                        : 9
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 6.83359
+variance of residuals (reduced chisquare) = WSSR/ndf   : 46.698
+p-value of the Chisq distribution (FIT_P)              : 0
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+m               = 339.064          +/- 0.6516       (0.1922%)
+c               = 159.227          +/- 3.855        (2.421%)
+
+correlation matrix of the fit parameters:
+                m      c      
+m               1.000 
+c              -0.845  1.000
+    \end{minted}
+
+\section{\gnuplot{} Quellcode zur Auswertung von Teilversuch 4}
+    \label{appdx:gnuplotTV4}
+
+    \gnuplot{} Code für Abbildung \ref{fig:tvfour-plot}
+    {  
+        % % Surpress "errors" in minted
+        % https://tex.stackexchange.com/a/289068
+        \renewcommand{\fcolorbox}[4][]{#4}
+        \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{gnuplot}
+#!/usr/bin/env gnuplot
+
+set term epslatex color size 6in, 4in
+set output "tv4-plot.tex"
+set decimalsign locale 'de_DE.UTF-8'
+
+set title "Resonanzkurve des Rohres bei der 2. Oberschwingung"
+set xlabel "Frequenz $f$ ($\\si{\\hertz}$)"
+set ylabel "Mikrofonspannung $U_\\text{eff}$ ($\\si{\\milli\\volt}$)"
+
+set mxtics
+set mytics
+set samples 10000
+
+omeganull = 837.7
+beta = 7.4
+A = 3
+f(x) = (A*omeganull**2)/(sqrt((omeganull**2 - x**2)**2 + (2*beta*x)**2))
+
+# (x, y, xdelta, ydelta)
+fit f(x) "tv4.dat" u 1:($2-1.1):(1):(2*0.2) xyerrors via omeganull,beta,A
+
+titel = "Angepasste Kurve"
+plot f(x) title titel lc rgb 'dark-magenta', \
+    "tv4.dat" u 1:2:(1):(sqrt(2)*0.2) with xyerrorbars title "Messpunkte" pointtype 0 lc rgb 'dark-goldenrod'
+        \end{minted}
+    }
+    mit \texttt{tv4.dat}:
+    \begin{multicols}{3}
+        \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
+#f/Hz   Ueff/mV
+1011    7,33
+980     7,53
+970     7,99
+952     8,85
+928     10,85
+910     13,45
+892     18,33
+881     23,31
+871     30,14
+861     44,53
+854     64,33
+850     85,80
+844     125,53
+841     149,11
+837     149,49
+833     120,65
+830     96,04
+825     71,73
+818     54,43
+810     41,24
+801     34,00
+790     28,51
+780     25,66
+760     22,68
+742     21,61
+        \end{minted}
+    \end{multicols}
+    \vspace{-\baselineskip}
+    Rohausgabe
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
+degrees of freedom    (FIT_NDF)                        : 22
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 5.71291
+variance of residuals (reduced chisquare) = WSSR/ndf   : 32.6373
+p-value of the Chisq distribution (FIT_P)              : 0
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+omeganull       = 835.893          +/- 1.46         (0.1746%)
+beta            = 7.79227          +/- 1.02         (13.09%)
+A               = 2.8473           +/- 0.1317       (4.626%)
+    \end{minted}

@@ -1,0 +1,56 @@
+\section{Teilversuch 2: Bestimmung eines Reflexiongrades}
+	Mit $A =$ die korrigierte maximale Amplitude und $B =$ die korrigierte minimale Amplitude ist das Reflexionsgrad $R$ und folglich dessen Fehler laut der Anleitung gegeben durch:
+	\begin{align}
+		R &= \pbrace{\frac{A+B}{A-B}}^2 \label{eqn:tv2-1} \\
+		\Delta R &= \gausserror{R}{A,B}
+	\end{align}
+	Die partielle Ableitungen liefern jeweils:
+	\begin{align}
+		\pdv{R}{A} &= 2 \pbrace{\frac{A-B}{A+B}}\sbrace{\frac{\cancel{A}+B-\pbrace{\cancel{A}-B}}{\pbrace{A+B}^2}} = 2 \pbrace{\frac{A-B}{A+B}} \sbrace{\frac{2B}{\pbrace{A+B}^2}} \notag \\
+		&= 4\cdot \frac{B\pbrace{A-B}}{\pbrace{A+B}^3} \\
+		\pdv{R}{B} &= 2 \pbrace{\frac{A-B}{A+B}}\sbrace{\frac{-\pbrace{A+\cancel{B}}-\pbrace{A-\cancel{B}}}{\pbrace{A+B}^2}} = 2 \pbrace{\frac{A-B}{A+B}} \sbrace{\frac{-2A}{\pbrace{A+B}^2}} \notag \\
+		&= -4\cdot \frac{A\pbrace{A-B}}{\pbrace{A+B}^3}
+	\end{align}
+	Da $\Delta A = \Delta B = \sqrt{2}\cdot\Delta S$, lässt der Fehler wie folgt schreiben:
+	\begin{equation}
+		\Delta R = 4\sqrt{2}\Delta S \frac{A-B}{\pbrace{A+B}^3}\sqrt{A^2+B^2} \label{eqn:tv2-2}
+	\end{equation}
+	wobei $\Delta S =$ der Fehler bei jeder Messung der Mikrofonspannung.
+
+	Die korrigierte Minima und Maxima werden hier als Zwischenergebnisse behandelt. Darum werden keine Fehler explizit berechnet. Die ist aber durch $\sqrt{2}\Delta S$ gegeben.
+
+	Der Mittelwert $\overbar{R}$ und dessen Fehler $\Delta R$ mittels der Methode der oberen und unteren Grenzen sind dann:
+	\begin{align}
+		\overbar{R} &= \frac{\sum_{i=1}^3 R_i}{3} \label{eqn:tv2-3} \\
+		\Delta \overbar{R} &= \frac{\sum_{i=1}^3 \pbrace{\cancel{R_i} + \Delta R_i} - \sum_{i=1}^3 \pbrace{\cancel{R_i} - \Delta R_i}}{3 \times 2}  = \frac{\sum_{i=1}^3 \Delta R_i + \cancel{\sum_{i=1}^3 \Delta R_i}}{3 \times \cancel{2}} \notag \\
+		&= \frac{\sum_{i=1}^3 \Delta R_i}{3} \label{eqn:tv2-4}
+	\end{align}
+	Da es nur beim zweiten Teilaufgabe der Auswertung zum Teilversuch 2 gefragt, dass man der Fehler $\Delta \overbar{R}$ mittels der Methode der oberen und unteren Grenzen berechnen soll, ist die Korrektur für $A$ und $B$ mittels Gauß'sche Fehlerfortpflanzung gerechnet. Außerdem ist auch schwerig, schnell zu bestimmen, wann $A$ bzw. $B$ jeweils maximal und minimal sein, um das maximales und minimales $R$ zu bekommen. 
+
+	Mit Gleichungen \eqref{eqn:tv2-1}, \eqref{eqn:tv2-2}, \eqref{eqn:tv2-3} und \eqref{eqn:tv2-4}, darstellen wir die Ergebnisse als Tabelle. Die Rechnungen erfolgt genauer in einem Tabellenkalkulationsprogramm. Die Werte hier sind schon gerundet. 
+	\begin{center}
+		\begin{tabular}{lrrr r}
+			\toprule
+			Paar $i$ & \num{1} & \num{2} & \num{3} & \\
+			\midrule
+			Min $S_\text{min} / \si{\milli\volt}$ & \num{5.8} & \num{6.2} & \num{6.0} & \\
+			Hintergr. $S_\text{min HG} / \si{\milli\volt}$ & \num{0.9} & \num{0.9} & \num{0.9} & \\
+			Max $S_\text{max} / \si{\milli\volt}$ &\num{20.7} & \num{20.1} & \num{20.5} & \\
+			Hintergr. $S_\text{max HG} / \si{\milli\volt}$ & \num{0.9} & \num{0.9} & \num{1.0} & \\
+			\midrule
+			$B / \si{\milli\volt}$ & \num{4.9} & \num{5.3} & \num{5.1} & \\
+			$A / \si{\milli\volt}$ & \num{19.8} & \num{19.2} & \num{19.5} & \\
+			$R$ & \num{0.364} & \num{0.322} & \num{0.343} & $\overbar{R} = \num{0.343}$ \\
+			$\Delta R$ & \num{0.023} & \num{0.022} & \num{0.023} & $\Delta \overbar{R} = \num{0.023}$ \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	Explizit geschrieben: $R = \num{0.343(23)}$. $R$ is einheitslos. 
+
+	Als Funktion der Energie ist $R$ gegeben durch:
+	\begin{equation}
+		R = \frac{b^2}{a^2} = \frac{\text{Energie der reflektierten Welle}}{\text{Energie der Quellwelle}}
+	\end{equation}
+	Laut Energieerhaltungssatz kann die reflektierte Welle keine Energie mehr als die Quellwelle haben. Das heißt, dass $b < a$ bzw. $R \in \sbrace{0,1}$ sein muss. In diesem Fall liegt unser Wert von $R$ in diesem Intervall, was physikalischen Sinn ergibt.
+
+	In unserem Versuch ist $\SI{34.3(23)}{\percent}$ der Energieflussdichte am offenen Rohrende reflektiert und $\SI{100}{\percent} - \SI{34.3(23)}{\percent} = \SI{65.7(23)}{\percent}$ transmittiert.

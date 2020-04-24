@@ -1,0 +1,28 @@
+decimal_sign in locale is ,
+iter      chisq       delta/lim  lambda   m             c            
+   0 1.1169784802e+08   0.00e+00  1.86e+03   -1.000000e+00   1.000000e+00
+   1 1.4091345368e+07  -6.93e+05  1.86e+02   -2.430276e-02   1.001731e+00
+   2 2.2529975836e+05  -6.15e+06  1.86e+01    2.593709e-03   3.836236e+00
+   3 9.2511396929e+00  -2.44e+09  1.86e+00   -1.558803e-03   5.797798e+00
+   4 1.3245992868e+00  -5.98e+05  1.86e-01   -1.584656e-03   5.809505e+00
+   5 1.3245992528e+00  -2.57e-03  1.86e-02   -1.584658e-03   5.809505e+00
+iter      chisq       delta/lim  lambda   m             c            
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.3246
+rel. change during last iteration : -2.5659e-08
+
+degrees of freedom    (FIT_NDF)                        : 14
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.307594
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0946142
+p-value of the Chisq distribution (FIT_P)              : 0.999994
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+m               = -0.00158466      +/- 3.893e-06    (0.2457%)
+c               = 5.80951          +/- 0.001279     (0.02202%)
+
+correlation matrix of the fit parameters:
+                m      c      
+m               1.000 
+c              -0.726  1.000

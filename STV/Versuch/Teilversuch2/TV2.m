@@ -1,0 +1,1 @@
+A = dlmread('TV2_50Messungen.stat', ' ', 15);

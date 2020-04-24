@@ -1,0 +1,68 @@
+\newpage
+\section{Teilversuch 3: Messung der Eigenfrequenzen einer Luftsäule}
+	Fehler bei Messung bzw. Steuerung der Frequenz $\Delta f_n = \SI{1}{\hertz}$\\
+	Fehler bei Messung der Mikrofonspannung $\Delta U_\text{eff} = \SI{0.1}{\milli\volt}$
+
+	\begin{center}
+		\begin{tabular}{l *{11}{r}}
+			\toprule
+			$n$ & \num{0} & \num{1} & \num{2} & \num{3} & \num{4} & \num{5} & \num{6} & \num{7} & \num{8} & \num{9} & \num{10} \\
+			\midrule
+			$f_n / \si{\hertz}$ & \num{168} & \num{502} & \num{837} & \num{1171} & \num{1510} & \num{1843} & \num{2188} & \num{2541} & \num{2876} & \num{3210} & \num{3554} \\
+			$U_\text{eff} / \si{\milli\volt}$ & \num{3.36} & \num{22.10} & \num{57.7} & \num{31.07} & \num{21.70} & \num{22.48} & \num{22.93} & \num{24.80} & \num{13.20} & \num{10.10} & \num{6.76} \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	Laut Gleichung (6) der Anleitung hat $f_n$ und $n$ den folgenden Zusammenhang:
+	\begin{equation}
+		f_n = \frac{v}{4L^{*}} \pbrace{2n +1} = \left(\frac{v}{2L^{*}}\right)n + \frac{v}{4L^{*}} \equiv an+b
+	\end{equation}
+	Daraus folgt auch, dass die akustische Rohrlänge $L^{*}$ und der dazugehörige Fehler $\Delta L^{*}$ sich wie folgt brechnen lässt:
+	\begin{align}
+		L^{*} &= \frac{v}{2a} \label{eqn:akustiklange}\\
+		\Delta L^{*} &= \gausserror{L^{*}}{v,a} \overset{\text{\scriptsize (AMW)}}{=} \frac{v}{2a}\sqrt{\pbrace{\frac{\Delta v}{v}}^2 + \pbrace{\frac{\Delta a}{a}}^2} \label{eqn:deltaakustiklange}
+	\end{align}
+
+	Die Daten wurden mit \gnuplot{} geplottet und eine Kurveanpassung wurde durchgeführt (Siehe Appendix \ref{appdx:gnuplotTV3}).
+	\begin{figure}[H]
+		\centering
+		\input{tv3-plot.tex}
+		\caption{\centering Messung der Oberschwingungen des Rohres\captionbr $\chi^2_{\text{red}} = \num{46.698} > 1 \implies$ Schlechte Anpassung}
+		\label{fig:tvthree-plot}
+		\vspace{-1em}
+	\end{figure}
+	Die schlechte Anpassung kann vermutlich dadurch erklärt werden, dass die Bestimmung der Resonanzfrequenzen eher ungenau war, besonders bei der Steuerung des Sinus-Generator. In diesem Fall wurden aber die Messungenauigkeit der Frequenzen schon bei der Kurvenanpassung berücksichtigt. Es könnte dann sein, dass wir diese Ungenauigkeit wesentlich unterschätzt haben. 
+
+	Als Endergebnis erhalten wir:
+	\begin{center}
+		\begin{tabular}{l r r}
+			\toprule
+			Variable & Rohausgabe & Gerundet \\
+			\midrule
+			$a$ & \SI{339,0636(6516)}{\hertz} & \SI{339.1(7)}{\hertz} \\
+			$b$ & \SI{159.227(3855)}{\hertz} & \SI{159(4)}{\hertz} \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	Wir benutzen in unserer Rechnungen die genauere Werte von $a$ und $\Delta a$ bzw. $v$ und $\Delta v$. In diesem Fall wurde für die Bestimmung der akustischen Rohrlänge aufgrund des geringeren Fehler $a$ statt $b$ gewählt, obwohl beide Werte theoretisch funktionieren könnten. 
+
+	Mit der folgenden Werten:
+    \begin{center}
+        \begin{tabular}{lrl}
+            \toprule
+            Variable & Wert & Bedeutung \\
+            \midrule
+            $a$ & \SI{339,0636(6516)}{\hertz} & Gefundene Steigung der Gerade \\
+            $v$ & \SI{344,424(1694)}{\meter\per\second} & Gefundene Schallgeschwindigkeit \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    lässt sich mittels Gleichungen \eqref{eqn:akustiklange} und \eqref{eqn:deltaakustiklange} die akustische Rohrlänge $L^{*}$ und deren Fehler $\Delta L^{*}$ bestimmen:
+    \begin{align}
+    	L^{*} &= \frac{\SI{344,424}{\meter\per\second}}{2\pbrace{\SI{339,0636}{\hertz}}} = \SI{0,507905}{\meter} \sigfig{6} \\
+    	\Delta L^{*} &= \frac{\SI{344,424}{\meter\per\second}}{2\pbrace{\SI{339,0636}{\hertz}}} \sqrt{\pbrace{\frac{\SI{1.694}{\meter\per\second}}{\SI{344,424}{\meter\per\second}}}^2 + \pbrace{\frac{\SI{0.6516}{\hertz}}{\SI{339,0636}{\hertz}}}^2} \notag \\
+    	&= \SI{2,682e-3}{\meter} \sigfig{4}
+    \end{align}
+    Daraus folgt, dass die akustische Rohrlänge $L^{*} = \SI{0,5079(27)}{\meter} = \SI{507.9(27)}{\milli\meter}$.
+
+    Im Vergleich dazu ist die gemessene Rohrlänge $L = \SI{50.0(1)}{\centi\meter} = \SI{500(1)}{\milli\meter}$. Das Fehlerintervall der beiden Werten überschneiden sich miteinander nicht, also ist $L^{*} > L$, was zu erwarten ist. 

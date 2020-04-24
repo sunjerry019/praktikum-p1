@@ -1,0 +1,1 @@
+Seite 14: eta_lit und eta_exp sind verträglich miteinander, eta_exp liegt im dreifachen Fehlerintervall von eta_lit

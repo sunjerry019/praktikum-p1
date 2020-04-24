@@ -1,0 +1,310 @@
+\setcounter{section}{4}
+\section{Teilversuch 5: Sinken von Kugeln in einer viskosen Flüssigkeit}
+	\subsection{Verhältnis aus Rohrradius $R$ und Kugelradius $r$}
+		\subsubsection{Kugel}
+			Fehler bei Messung des Kugeldurchmessers $= \SI{0.01}{\milli\meter}$
+
+			\begin{center}
+				\begin{tabular}{l r r r}
+					\toprule
+					Messung $n$ & $1$ & $2$ & $\overbar{d_i}$\\
+					\midrule
+					Durchmesser der kleinen Kugel $d_k$ / \si{\milli\meter} & \num{0.98} & \num{0.99} & \num{0.985}\\
+					Durchmesser der großen Kugel $d_g$ / \si{\milli\meter} & \num{2.99} & \num{2.99} & \num{2.990} \\
+					\bottomrule
+				\end{tabular}
+			\end{center}
+			Der Mittelwerte $\overbar{d_i}$, $i = g, k$ wurden wie folgt berechnet:
+	        \begin{equation}
+	            \Delta d \coloneqq \overbar{d_i} = \frac{1}{N} \left(\sum_{x=1}^{N} d_{in} \right) = \frac{1}{2} \left(\sum_{x=1}^{2} d_{in} \right) \label{eqn:mittelwert}
+	        \end{equation}
+	        \newpage
+	        Da alle Messungen stochastisch unabhängig sind, benutzen wir hier die Gauß'scher Fehlerfortpflanzung:
+	        \begin{equation}
+	            \Delta \overbar{d_i} = \frac{\Delta d_i}{\sqrt{N}} = \frac{\Delta d_i}{\sqrt{2}} = \frac{\SI{0.01}{\milli\meter}}{\sqrt{2}} = \SI{0.008}{\milli\meter} \label{eqn:mittelfehler}
+	        \end{equation}
+
+	    \subsubsection{Rohr}
+		    \begin{center}
+		    	\begin{tabular}{l r}
+		    		Innendurchmesser des kleinen Rohres $D_k$ & \SI{9.95(5)}{\milli\meter} \\
+		    		Innendurchmesser des großen Rohres $D_g$  & \SI{55.45(5)}{\milli\meter} \\
+		    	\end{tabular}
+		    \end{center}
+
+		\subsubsection{Verhältnisse}
+			Die Verhältnis $k$ aus Rohrradius $R$ und $r$ und der dazugehörige Fehler $\Delta k$ sind gegeben durch:
+			\begin{align}
+				k &= \frac{R}{r} = \frac{D}{d} \\
+				\Delta k &= \gausserror{k}{D,d} = \sqrt{\pbrace{\frac{\Delta D}{d}}^2 + \pbrace{\frac{D}{d^2} \Delta d}^2} \notag \\
+				&= \frac{1}{d}\sqrt{\pbrace{\Delta D}^2 + \pbrace{\frac{D}{d} \Delta d}^2} \label{eqn:kfehler}
+			\end{align}
+			$k$ ist Einheitslos.
+
+			\iu{Kleine Kugel, Kleines Rohr}
+			\begin{align}
+				k &= \frac{D_k}{d_k} = \frac{\SI{9.95}{\milli\meter}}{\SI{0.985}{\milli\meter}} = \num{10.1015} \sigfig{6} \\
+				\Delta k &= \frac{1}{\SI{0.985}{\milli\meter}}\sqrt{\pbrace{\SI{0.05}{\milli\meter}}^2 + \pbrace{\frac{\SI{9.95}{\milli\meter}}{\SI{0.985}{\milli\meter}} \pbrace{\frac{\SI{0.01}{\milli\meter}}{\sqrt{2}}}}^2} \notag \\
+				&= \num{0.0886} \sigfig{3} \\
+				\implies &k_{kK} = \num{10.10(9)}
+			\end{align}
+
+			\iu{Kleine Kugel, Großes Rohr}
+			\begin{align}
+				k &= \frac{D_g}{d_k} = \frac{\SI{55.45}{\milli\meter}}{\SI{0.985}{\milli\meter}} = \num{56,2944} \sigfig{6} \\
+				\Delta k &= \frac{1}{\SI{0.985}{\milli\meter}}\sqrt{\pbrace{\SI{0.05}{\milli\meter}}^2 + \pbrace{\frac{\SI{55.45}{\milli\meter}}{\SI{0.985}{\milli\meter}} \pbrace{\frac{\SI{0.01}{\milli\meter}}{\sqrt{2}}}}^2} \notag \\
+				&= \num{0,408} \sigfig{3} \\
+				\implies &k_{kG} = \num{56,3(5)}
+			\end{align}
+
+			\iu{Große Kugel, Kleines Rohr}
+			\begin{align}
+				k &= \frac{D_k}{d_g} = \frac{\SI{9.95}{\milli\meter}}{\SI{2,990}{\milli\meter}} = \num{3.32776} \sigfig{6} \\
+				\Delta k &= \frac{1}{\SI{2,990}{\milli\meter}}\sqrt{\pbrace{\SI{0.05}{\milli\meter}}^2 + \pbrace{\frac{\SI{9.95}{\milli\meter}}{\SI{2,990}{\milli\meter}} \pbrace{\frac{\SI{0.01}{\milli\meter}}{\sqrt{2}}}}^2} \notag \\
+				&= \num{0.0185} \sigfig{3} \\
+				\implies &k_{gK} = \num{3.328(19)}
+			\end{align}
+
+			\iu{Große Kugel, Großes Rohr}
+			\begin{align}
+				k &= \frac{D_g}{d_k} = \frac{\SI{55.45}{\milli\meter}}{\SI{2,990}{\milli\meter}} = \num{18.5452} \sigfig{6} \\
+				\Delta k &= \frac{1}{\SI{2,990}{\milli\meter}}\sqrt{\pbrace{\SI{0.05}{\milli\meter}}^2 + \pbrace{\frac{\SI{55.45}{\milli\meter}}{\SI{2,990}{\milli\meter}} \pbrace{\frac{\SI{0.01}{\milli\meter}}{\sqrt{2}}}}^2} \notag \\
+				&= \num{0.0470} \sigfig{3} \\
+				\implies &k_{gG} = \num{18.55(5)}
+			\end{align}
+
+			Tabuliert haben wir für $k$:
+			\begin{center}
+				\begin{tabular}{l | r r}
+				& Kleine Kugel & Große Kugel \\
+				\midrule
+				Kleines Rohr & \num{10.10(9)} & \num{3.328(19)} \\ 
+				Großes Rohr & \num{56,3(5)} & \num{18.55(5)}
+				\end{tabular}
+			\end{center}
+	\newpage
+	\subsection{Sinkgeschwindigkeiten}
+		Angenommen, dass die Kugeln eine konstante Geschwindigkeit während des Sinkens haben, dann lässt sich die Sinkgeschwindigkeit $v$ und der dazugehörige Fehler $\Delta k$ durch einfache Kinematik bestimmen:
+		\begin{align}
+			v &= \frac{s}{t} \\
+			\Delta v &\overset{\eqref{eqn:kfehler}}{=} \frac{1}{t}\times\sqrt{\pbrace{\Delta s}^2 + \pbrace{\frac{s}{t} \Delta t}^2}
+		\end{align}
+		wobei $s =$ Höhe der Fallstrecke und $t =$ Fallzeit.
+
+		Als Fallstrecke haben wir immer $s = \SI{801(1)}{\milli\meter}$.
+
+		Für die Fallzeiten haben wir immer einen Fehler von $\SI{0.2}{\second}$.
+
+		\iu{Kleine Kugel, Weites Rohr}
+
+		Als Fallzeiten der kleine Kugel im weiten Rohr haben wir:
+		\begin{center}
+			\begin{tabular}{l rrr r}
+				\toprule
+				Messung & \num{1} & \num{2} & \num{3} & $\overbar{t_i}$ \\ 
+				\midrule
+				Fallzeit $t_i$ / \si{\second} & \num{109.02} & \num{109.09} & \num{109.30} & \num{109.137} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		Die Rechnung für den Mittelwert erfolgt wie bei Gleichung \eqref{eqn:mittelwert} mit $N = 3$. Der Fehler ist dann analog zu \eqref{eqn:mittelfehler} $= \SI{0.2}{\second} / \sqrt{3} = \SI{0.12}{\second}$.
+
+		$v$ und $\Delta v$ sind dann gegeben durch:
+		\begin{align}
+			v &= \frac{\SI{801}{\milli\meter}}{\SI{109.137}{\second}} = \SI{7.33942}{\milli\meter\per\second} \sigfig{6} \\
+			\Delta v &= \frac{1}{\SI{109.137}{\second}}\times\sqrt{\pbrace{\SI{1}{\milli\meter}}^2 + \pbrace{\frac{\SI{801}{\milli\meter}}{\SI{109.137}{\second}} \pbrace{\frac{\SI{0.2}{\second}}{\sqrt{3}}}}^2} \notag \\
+			&= \SI{0.0121}{\milli\meter\per\second} \sigfig{3} \\
+			\implies &v_{kw}  = \SI{7.339(12)}{\milli\meter\per\second}
+		\end{align}
+
+		\iu{Kleine Kugel, Enges Rohr}
+
+		Als Fallzeiten der kleine Kugel im engen Rohr haben wir:
+		\begin{center}
+			\begin{tabular}{l rrr}
+				\toprule
+				Messung & \num{1} & \num{2} & $\overbar{t_i}$ \\ 
+				\midrule
+				Fallzeit $t_i$ / \si{\second} & \num{137.15} & \num{137.02} & \num{137.085} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		Die Rechnung für den Mittelwert erfolgt wie bei Gleichung \eqref{eqn:mittelwert}. Der Fehler ist dann analog zu \eqref{eqn:mittelfehler} $= \SI{0.2}{\second} / \sqrt{2} = \SI{0.15}{\second}$.
+
+		$v$ und $\Delta v$ sind dann gegeben durch:
+		\begin{align}
+			v &= \frac{\SI{801}{\milli\meter}}{\SI{137.085}{\second}} = \SI{5.84309}{\milli\meter\per\second} \sigfig{6} \\
+			\Delta v &= \frac{1}{\SI{137.085}{\second}}\times\sqrt{\pbrace{\SI{1}{\milli\meter}}^2 + \pbrace{\frac{\SI{801}{\milli\meter}}{\SI{137.085}{\second}} \pbrace{\frac{\SI{0.2}{\second}}{\sqrt{2}}}}^2} \notag \\
+			&= \SI{9.47e-3}{\milli\meter\per\second} \sigfig{3} \\
+			\implies &v_{ke}  = \SI{5.843(10)}{\milli\meter\per\second}
+		\end{align}
+
+		\iu{Große Kugel, Weites Rohr}
+
+		Als Fallzeiten der große Kugel im weiten Rohr haben wir:
+		\begin{center}
+			\begin{tabular}{l rrr}
+				\toprule
+				Messung & \num{1} & \num{2} & $\overbar{t_i}$ \\ 
+				\midrule
+				Fallzeit $t_i$ / \si{\second} & \num{13,07} & \num{13,13} & \num{13,10} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		Die Rechnung für den Mittelwert erfolgt wie bei Gleichung \eqref{eqn:mittelwert}. Der Fehler ist wie vorher $= \SI{0.2}{\second} / \sqrt{2} = \SI{0.15}{\second}$.
+
+		$v$ und $\Delta v$ sind dann gegeben durch:
+		\begin{align}
+			v &= \frac{\SI{801}{\milli\meter}}{\SI{13,10}{\second}} = \SI{61.1450}{\milli\meter\per\second} \sigfig{6} \\
+			\Delta v &= \frac{1}{\SI{13,10}{\second}}\times\sqrt{\pbrace{\SI{1}{\milli\meter}}^2 + \pbrace{\frac{\SI{801}{\milli\meter}}{\SI{13,10}{\second}} \pbrace{\frac{\SI{0.2}{\second}}{\sqrt{2}}}}^2} \notag \\
+			&= \SI{0.665}{\milli\meter\per\second} \sigfig{3} \\
+			\implies &v_{gw}  = \SI{61.1(7)}{\milli\meter\per\second}
+		\end{align}
+
+		\iu{Große Kugel, Enges Rohr}
+
+		Als Fallzeiten der große Kugel im engen Rohr haben wir:
+		\begin{center}
+			\begin{tabular}{l rrr}
+				\toprule
+				Messung & \num{1} & \num{2} & $\overbar{t_i}$ \\ 
+				\midrule
+				Fallzeit $t_i$ / \si{\second} & \num{31,86} & \num{32,06} & \num{31,96} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		Die Rechnung für den Mittelwert erfolgt wie bei Gleichung \eqref{eqn:mittelwert}. Der Fehler ist wie vorher $= \SI{0.2}{\second} / \sqrt{2} = \SI{0.15}{\second}$.
+
+		$v$ und $\Delta v$ sind dann gegeben durch:
+		\begin{align}
+			v &= \frac{\SI{801}{\milli\meter}}{\SI{31,96}{\second}} = \SI{25,0626}{\milli\meter\per\second} \sigfig{6} \\
+			\Delta v &= \frac{1}{\SI{31,96}{\second}}\times\sqrt{\pbrace{\SI{1}{\milli\meter}}^2 + \pbrace{\frac{\SI{801}{\milli\meter}}{\SI{31,96}{\second}} \pbrace{\frac{\SI{0.2}{\second}}{\sqrt{2}}}}^2} \notag \\
+			&= \SI{0.116}{\milli\meter\per\second} \sigfig{3} \\
+			\implies &v_{ge}  = \SI{25,06(12)}{\milli\meter\per\second}
+		\end{align}
+
+		Tabuliert haben wir für $v$:
+		\begin{center}
+			\begin{tabular}{l | r r}
+			& Kleine Kugel & Große Kugel \\
+			\midrule
+			Enges Rohr & \SI{5.84(1)}{\milli\meter\per\second} & \SI{25,06(12)}{\milli\meter\per\second} \\ 
+			Weites Rohr & \SI{7.339(12)}{\milli\meter\per\second} & \SI{61.1(7)}{\milli\meter\per\second}
+			\end{tabular}
+		\end{center}
+
+	\subsection{Diskussion und Interpretation}
+		Zusammengefasst erhalten wir zum Vergleich:
+
+		\begin{center}
+			\begin{tabular}{l l | r r}
+			& & Kleine Kugel & Große Kugel \\
+			\midrule
+			\multirow{2}{*}{Enges Rohr} & $k$ & \num{10.10(9)} & \num{3.328(19)} \\
+			& $v / \si{\milli\meter\per\second}$ & \num{5.843(10)} & \num{25,06(12)} \\ 
+			\midrule
+			\multirow{2}{*}{Weites Rohr} & $k$ & \num{56,3(5)} & \num{18.55(5)} \\
+			& $v / \si{\milli\meter\per\second}$ & \num{7.339(12)} & \num{61.1(7)}
+			\end{tabular}
+		\end{center}
+
+		Wenn man das gleiches Rohr betrachtet ($R$ konstant), dann steigt die Sinkgeschwindigkeit $v$ mit abnehmende $k$. Das sieht man in jeder Zeile der obigen Tabelle. 
+
+		Wenn man die gleiche Kugel betrachtet ($r$ konstant), dann steigt die Sinkgeschwindigkeit $v$ mit zunehmende $k$. Das sieht man in jeder Spalte der obigen Tabelle. 
+
+		Im Allgemein ist es erkennbar, dass die Kugeln im engen Rohr langsamer fallen als im weiten Rohr, und dass die kleine Kugel wesentlich langsamer fällt als die große Kugel. Dies ist darauf zurückzuführen, dass im engen Rohr Reibungseffekte an der Rohrwand verstärkt auftreten, da die Geschwindigkeit des Fluids an der Rohrwand null sein muss. Außerdem steigt die Reibung bei der fallenden Kugel nach Stokes nur linear mit $r$, währenddessen steigt der Gewichtskraft einer Kugel mit der Ordnung $r^3$ ($m \propto V \propto r^3$). Dieser Zusammenhang führt zu der beobachteten Situation, indem die größere Kugel schneller fällt. 
+
+		Die Reproduzierbarkeit der Messungen sollte besser bei der kleinen Kugel im weiten Rohr sein als die Messungen der großen Kugel im engen Rohr. Der Grund dafür ist, dass die Reibungseffekte an der Rohrwand sich kaum bei Abweichungen der kleinen Kugel vom Mittelpunkt des weiten Rohres ändern sollten. Dagegen beeinflussen solche Abweichungen bei der großen Kugel im engen Rohr die Reibungseffekte an der Rohrwand erheblich. Das kann zu der relativen Größen der Kugel und des Rohrs zurückgeführt werden. Zudem fällt die kleinen Kugeln auch langsamer, was eine Zeitmessung vereinfacht.
+
+		In unserer Zeitmessungen der kleiner Kugel im weiten Rohr war der Fehler jeder Messung als $\SI{0.2}{\second}$ geschätzt, was nach 3 Messungen auf $\Delta t = \SI{0.2}{\second} / \sqrt{3} = \SI{0.12}{\second}$ abnimmt. Das war schon bei der Rechnung der Sinkgeschwindigkeit gerechnet und berücksichtigt. 
+
+	\subsection{Viskositätsrechnung}
+		Aus Gleichung (12) der Anleitung lassen die Viskosität $\eta$ und den dazugehörigen Fehler $\Delta \eta$ sich wie folgt berechnen. Der Fehler von $m_{\!f}$ werden in diesem Fall vernachlässigt, um die Rechnung zu vereinfachen.
+		\begin{align}
+			\eta &= \frac{\pbrace{m_k - \frac{4}{3}\pi r^3 \rho_{\!f}}gt}{6\pi r s} \\
+			\Delta \eta &= \gausserror{\eta}{m_k, r, t, s, \rho} \notag \\
+			&\overset{\text{\scriptsize (AMW)}}{=} \eta \times \sqrt{\pbrace{\frac{\Delta m_k}{m_k}}^2 + \pbrace{\frac{\Delta r}{r}}^2 + \pbrace{\frac{\Delta t}{t}}^2 + \pbrace{\frac{\Delta s}{s}}^2 + \pbrace{\frac{\Delta \rho}{\rho}}^2}
+		\end{align}
+		Mit der folgenden Werte:
+		\begin{center}
+	        \begin{tabular}{lrl}
+	            \toprule
+	            Variable & Wert & Bedeutung \\
+	            \midrule
+	            $g$ & \SI{9807}{\milli\meter\per\second\squared} & Erdfeldbeschleunigung \\
+	            $2r$ & \SI{0.985(8)}{\milli\meter} & Durchmesser der kleinen Kugel \\
+	            $r$ & \SI{0.493(4)}{\milli\meter} & Radius der kleinen Kugel \\
+	            $t$ & \SI{109.14(12)}{\second} & Fallzeit der kleinen Kugel \\
+	            $s$ & \SI{801(1)}{\milli\meter} & Höhe der Fallstrecke \\
+	            $\rho$ & \SI{0,856(4)}{\gram\per\milli\liter} & Dichte des Öls \\
+	            $26m_k$ & \SI{0,1005(3)}{\gram} & Masse von 26 kleinen Kugeln \\
+	            $m_k$ & \SI{3.865(12)e-3}{\gram} & Masse einer kleiner Kugel \\
+	            \bottomrule
+	        \end{tabular}
+	    \end{center}
+		erhalten wir:
+		\begin{align}
+			\eta &= \frac{\pbrace{\SI{3.865e-3}{\gram} - \frac{4}{3}\pi \pbrace{\SI{0.493}{\milli\meter}}^3 \pbrace{\SI{0,856e-3}{\gram\per\milli\meter\cubed}}}\pbrace{\SI{9807}{\milli\meter\per\second\squared}}\pbrace{\SI{109.14}{\second}}}{6\pi \pbrace{\SI{0.493}{\milli\meter}} \pbrace{\SI{801}{\milli\meter}}} \notag \\
+			&= \SI{0.494672}{\gram\per\milli\meter\per\second} \sigfig{6}\\
+			\Delta \eta &= \SI{0.494672}{\gram\per\milli\meter\per\second} \notag \\
+			&~~~\times \sqrt{\pbrace{\frac{\SI{0.012e-3}{\gram}}{\SI{3.865e-3}{\gram}}}^2 + \pbrace{\frac{\SI{0.004}{\milli\meter}}{\SI{0.493}{\milli\meter}}}^2 + \pbrace{\frac{\SI{0.12}{\second}}{\SI{109.14}{\second}}}^2 + \pbrace{\frac{\SI{1}{\milli\meter}}{\SI{801}{\milli\meter}}}^2 + \pbrace{\frac{\SI{0.004}{\gram\per\milli\liter}}{\SI{0.856}{\gram\per\milli\liter}}}^2} \notag \\
+			&= \SI{4.95e-3}{\gram\per\milli\meter\per\second} \sigfig{3}
+		\end{align}
+		Daraus folgt, dass $\eta = \SI{0.495(5)}{\gram\per\milli\meter\per\second} = \SI{0.495(5)}{\pascal\second}$
+
+	\newpage
+	\subsection{Vergleich mit dem Literaturwert}
+		Laut der Anleitung haben die absolute Temperatur und die Viskosität eines Öls die folgende Relation:
+		\begin{equation}
+			\eta(T) = \eta_\infty\exp\pbrace{B/T} \iff \ln\sbrace{\eta} = B\cdot\pbrace{\frac{1}{T}} + \ln\sbrace{n_\infty}
+		\end{equation}
+
+		Wir plotten mithilfe \gnuplot{} $\ln\sbrace{\eta}$ gegen $\frac{1}{T}$ der angegebenen Daten und führen eine Kurvenanpassung durch. Die gefundene Gerade wird dann zum Rechnung der Literaturwert der Viskosität des Öls im Labor benutzt. Siehe Appendix \ref{appdx:tv5gnuplot} für das Quellcode zu diesem Teilversuch.
+
+		Die gemessene Temperatur des Öls lautet $\SI{21.5(5)}{\celsius}$.
+
+		Die Grafiken sind wie folgt:
+
+		\begin{figure}[H]
+			\centering
+			\input{tv5-plot.tex}
+			\caption{Zusammenhang zwischen $\ln\sbrace{\eta}$ und $\frac{1}{T}$}
+			\label{fig:tvfive-plot}
+		\end{figure}
+
+		Abgelesen haben wir als Ergebnis die optimale Geraden:
+		\begin{center}
+			\begin{tabular}{llll}
+				\toprule
+				Ölsorte & Angepasste Kurve & Stoffkonstant & $\chi^2_\text{red}$ \\
+				\midrule
+				Rizinusöl & $\pbrace{\num{6878,02(4034)}}x - \pbrace{\num{23.4820(1378)}}$ & \SI{6880(40)}{\kelvin} & \num{4.41997e-05} \\
+				Getriebeöl & $\pbrace{\num{5274.92(254)}}x - \pbrace{\num{18.5217(87)}}$ & \SI{5274.9(26)}{\kelvin} & \num{2.18987e-07} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+
+		Da es explizit gefragt war, ist der Kehrwert $1/T$ und der dazugehörige Fehler $\Delta \pbrace{1/T}$ hier berechnet:
+		\begin{align}
+			\frac{1}{T} &= \frac{1}{\pbrace{\num{21.5} + \num{273.15}}~\si{\kelvin}} = \SI{3.39386e-3}{\per\kelvin} \sigfig{6} \\
+			\Delta \pbrace{\frac{1}{T}} &= \frac{\Delta T}{T^2} = \frac{\SI{0.5}{\kelvin}}{\pbrace{\num{21.5} + \num{273.15}}^2~\si{\kelvin\squared}}=\SI{5.76e-6}{\per\kelvin} \sigfig{3}
+		\end{align}
+		Daraus folgt $1/T = \SI{3.394(6)e-3}{\per\kelvin}$
+
+		Andere Rechnungen erfolgt in \gnuplot{} und wegen der Symmetrie der Fehler sind sie dann als $\pbrace{\max - \min}/2$ genommen. Mehr signifikante Ziffern als nötig werden in diesem Fall dargestellt, um mögliche Rundungsfehler zu vermeiden. Siehe Appendix \ref{appdx:tv5gnuplot} für die Rohausgabe aus \gnuplot{}.
+
+		Abgelesen erhalten wir als Literaturwerte bei $T = \SI{21.5(5)}{\celsius}$:
+		\begin{center}
+			\begin{tabular}{lrrr}
+				\toprule
+				Ölsorte & $\mini{\eta_\text{~lit}}$ & $\maxi{\eta_\text{~lit}}$ & $\eta_\text{~lit}$ \\
+				\midrule
+				Rizinusöl & \SI{0,83651328}{\pascal\second} & \SI{0,90548028}{\pascal\second} & \SI{0,87(4)}{\pascal\second} \\
+				Getriebeöl & \SI{0,52221602}{\pascal\second} & \SI{0,55492858}{\pascal\second} & \SI{0,538(17)}{\pascal\second} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+
+		Im Vergleich zu unserem empirischen Wert $\eta_\text{~exp} = \SI{0.495(5)}{\pascal\second}$ ist es dann höchstwahrschein\-lich, dass Getriebeöl im Experiment verwendet wurden. Es ist aber offentsichlich, dass die zwei Werte unterscheiden sich signifikant voneinander.
+
+		Dieser Unterchied kann vermütlich darauf zurückgeführt werden, dass es bei der kleinen Kugel im weiten Rohr immer noch verwirbelungen bzw. Reibungseffekte gibt, die im Rechnungen nicht berücksichtigt wurden. Das kann beispielweise entstehen, wenn die Kugeln nicht gut gesaubert waren. Die Fallzeit der kleinen Kugel war auch etwas ungenau und es könnte sein, dass die Ungenauigkeit der Zeitmessung unterschätzt war. Da die Temperatur und Dichte des Öls nicht vom benutzten Ölrohr gelesen wurden, könnte es auch sein, dass die abgelesene Werte nicht die echte Parameter beim Experiment sind. 

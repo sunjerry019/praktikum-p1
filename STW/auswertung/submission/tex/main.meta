@@ -1,0 +1,156 @@
+InfoBegin
+InfoKey: ModDate
+InfoValue: D:20200311093829+01'00'
+InfoBegin
+InfoKey: PTEX.Fullbanner
+InfoValue: This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) kpathsea version 6.3.1
+InfoBegin
+InfoKey: CreationDate
+InfoValue: D:20200311093829+01'00'
+InfoBegin
+InfoKey: Author
+InfoValue: Yudong Sun
+InfoBegin
+InfoKey: Title
+InfoValue: P1 &#8211; STW Auswertung
+InfoBegin
+InfoKey: Creator
+InfoValue: LaTeX with hyperref
+InfoBegin
+InfoKey: Producer
+InfoValue: pdfTeX-1.40.20
+PdfID0: 72b84baba6c39aa7178e68540e3e495d
+PdfID1: 72b84baba6c39aa7178e68540e3e495d
+NumberOfPages: 16
+BookmarkBegin
+BookmarkTitle: 1 Teilversuch 1: Bestimmung der Schallgeschwindigkeit in Luft
+BookmarkLevel: 1
+BookmarkPageNumber: 1
+BookmarkBegin
+BookmarkTitle: 1.1 Bestimmung der Wellenl&#228;nge
+BookmarkLevel: 2
+BookmarkPageNumber: 1
+BookmarkBegin
+BookmarkTitle: 1.2 Bestimmung der Schallgeschwindigkeit in Luft
+BookmarkLevel: 2
+BookmarkPageNumber: 4
+BookmarkBegin
+BookmarkTitle: 1.3 Bestimmung des Adiabatenexponentes  der Luft
+BookmarkLevel: 2
+BookmarkPageNumber: 5
+BookmarkBegin
+BookmarkTitle: 2 Teilversuch 2: Bestimmung eines Reflexiongrades
+BookmarkLevel: 1
+BookmarkPageNumber: 6
+BookmarkBegin
+BookmarkTitle: 3 Teilversuch 3: Messung der Eigenfrequenzen einer Lufts&#228;ule
+BookmarkLevel: 1
+BookmarkPageNumber: 8
+BookmarkBegin
+BookmarkTitle: 4 Teilversuch 4: Messung der Resonanzkurve f&#252;r eine Oberschwingung
+BookmarkLevel: 1
+BookmarkPageNumber: 10
+BookmarkBegin
+BookmarkTitle: 4.1 Messreihe
+BookmarkLevel: 2
+BookmarkPageNumber: 10
+BookmarkBegin
+BookmarkTitle: 4.2 Graph
+BookmarkLevel: 2
+BookmarkPageNumber: 10
+BookmarkBegin
+BookmarkTitle: A gnuplot Quellcode zur Auswertung von Teilversuch 1
+BookmarkLevel: 1
+BookmarkPageNumber: 12
+BookmarkBegin
+BookmarkTitle: B python Quellcode zur Berechnung der Mittelwert und Standardabweichung im Teilversuch 1
+BookmarkLevel: 1
+BookmarkPageNumber: 14
+BookmarkBegin
+BookmarkTitle: C gnuplot Quellcode zur Auswertung von Teilversuch 3
+BookmarkLevel: 1
+BookmarkPageNumber: 14
+BookmarkBegin
+BookmarkTitle: D gnuplot Quellcode zur Auswertung von Teilversuch 4
+BookmarkLevel: 1
+BookmarkPageNumber: 15
+PageMediaBegin
+PageMediaNumber: 1
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 2
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 3
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 4
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 5
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 6
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 7
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 8
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 9
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 10
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 11
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 12
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 13
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 14
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 15
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89
+PageMediaBegin
+PageMediaNumber: 16
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 841.89
+PageMediaDimensions: 595.276 841.89

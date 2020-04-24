@@ -1,0 +1,143 @@
+\section{Teilversuch 1: Oberfläsche Spannung einer Flüssigkeit}
+	\subsection{Bestimmung des Radius des Aluminiumrings}
+		Da der Alumimiumring eine endliche Dicke hat, messen wir beide Innen- ($r_i$) und Außenradien ($r_a$) des Rings und nehmen für die Rechnung den Durchschnitt davon. In diesem Fall können wir nur den Durchmesser ($2r$) messen und daraus den Radius des Rings berechnen. 
+
+		Fehler bei jeder Messung $= \SI{0.05}{\milli\meter}$
+
+		\begin{center}
+			\begin{tabular}{ll ll r}
+				\toprule
+				\multicolumn{2}{c}{$2r_i$ / \SI{}{\milli\meter}} & \multicolumn{2}{c}{$2r_a$ / \SI{}{\milli\meter}} & \multirow{2}{*}{$\bar{r}$ / \SI{}{\milli\meter}} \\
+				$2r_{i1}$ & $2r_{i2}$ & $2r_{a1}$ & $2r_{a2}$ \\
+				\midrule
+				\num{61.40} & \num{61.60} & \num{62.50} & \num{62.45} & \num{30,99375} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		wobei $\bar{r}$ ist gegeben durch:
+		\begin{equation}
+			\bar{r} = \frac{2r_{i1} + 2r_{i2} + 2r_{a1} + 2r_{a2}}{8}
+		\end{equation}
+		Der dazugehörige Fehler ist folglich dann:
+		\begin{align}
+			\Delta \bar{r} &= \gausserror{\bar{r}}{2r_{i1}, 2r_{i2}, 2r_{a1}, 2r_{a2}} \notag \\
+			&= \sqrt{4\left(\frac{1}{8}\Delta 2r\right)^2} = \frac{1}{4}\Delta 2r \notag \\
+			&= \frac{1}{4}\left(\SI{0.05}{\milli\meter}\right) = \SI{0.0125}{\milli\meter}
+		\end{align}
+		Daraus folgt: $\bar{r} = r = \SI{30.994(13)}{\milli\meter}$.
+
+	\pagebreak
+	\subsection{Bestimmung der Gewichtskraft des Aluminiumrings im Luft}
+		Fehler bei jeder Messung $= \SI{0.0005}{\newton}$ 
+
+		\begin{center}
+			\begin{tabular}{l rr r}
+				\toprule
+				$n$ & $1$ & $2$ & $\overbar{F_g}$ \\
+				\midrule
+				Gewichtskraft $F_g$ / $\si{\newton}$ & \num{0.0540} & \num{0.0535} & \num{0.05375} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		wobei $\overbar{F_g} = \sum{F_{gn}}/2$ der Durchschnitt ist.
+
+		Der dazugehörige Fehler ist folglich dann:
+		\begin{align}
+			\Delta \overbar{F_g} &= \gausserror{\overbar{F_g}}{F_{g1}, F_{g2}} = \frac{\Delta F_g}{\sqrt{2}} \notag \\
+			&= \frac{\SI{0.0005}{\newton}}{\sqrt{2}} = \SI{3.53554e-4}{\newton} \sigfig{6} \label{eqn:fgavg}
+		\end{align}
+		Daraus folgt: $\overbar{F_g} = F_g = \SI{0.0538(4)}{\newton}$
+
+	\subsection{Bestimmung der Oberfläschespannung von Wasser}
+		\subsubsection{Messreihe}
+			Fehler bei jeder Messung $= \SI{0.0005}{\newton}$ 
+
+			\begin{center}
+				\begin{tabular}{l *{6}{r} r}
+					\toprule
+					$n$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $\overbar{F}$ \\
+					\midrule
+					Kraft $F$ / $\si{\newton}$ & \num{0.0800} & \num{0.0810} & \num{0.0790} & \num{0.0795} & \num{0.0800}{} & \num{0.0795} & \num{0.0798333} \\
+					\bottomrule
+				\end{tabular}
+			\end{center}
+			wobei $\overbar{F} = \sum{F_n}/6$ der Durchschnitt ist.
+
+			Der dazugehörige Fehler ist analog zu \eqref{eqn:fgavg} folglich dann:
+			\begin{equation}
+				\Delta \overbar{F} = \frac{\Delta F}{\sqrt{6}} = \frac{\SI{0.0005}{\newton}}{\sqrt{6}} = \SI{2,04125e-4}{\newton} \sigfig{6}
+			\end{equation}
+			Daraus folgt: $\overbar{F} = F = \SI{0.07983(21)}{\newton}$
+
+		\subsubsection{Rechnung}
+			Aus Gleichung (13) der Anleitung ist der Oberfläschespannung gegeben durch:
+			\begin{equation}
+				\sigma = \frac{F - F_g}{4\pi r} \label{eqn:sigma}
+			\end{equation}
+			Der Fehler ist folglich dann:
+			\begin{equation}
+				\Delta \sigma = \gausserror{\sigma}{F, F_g, r} \label{eqn:sigmaerror}
+			\end{equation}
+			Die partielle Ableitungen liefern jeweils:
+			\begin{align*}
+				\pdv{\sigma}{F} &= \frac{1}{4\pi r} = -\pdv{\sigma}{F_g} \\
+				\pdv{\sigma}{r} &= -\frac{F-F_g}{4\pi r^2}
+			\end{align*}
+			In Gleichung \eqref{eqn:sigmaerror} einsetzen: 
+			\begin{equation}
+				\Delta \sigma = \frac{1}{4\pi r}\sqrt{\left(\Delta F\right)^2 + \left(\Delta F_g\right)^2 + \left(\frac{F - F_g}{r}\Delta r\right)^2} \label{eqn:sigmaerror2}
+			\end{equation}
+			Durch Gleichungen \eqref{eqn:sigma} und \eqref{eqn:sigmaerror2} lässt es sich $\sigma$ bestimmen:
+			\begin{align}
+				\sigma &= \frac{\SI{0.07983}{\newton} - \SI{0.05375}{\newton}}{4\pi \times \SI{30,99375}{\milli\meter}} = \SI{6.69698e-5}{\newton\per\milli\meter} \sigfig{6} \\
+				\Delta \sigma &= \frac{1}{4\pi \SI{30,99375}{\milli\meter}}\left(\left(\SI{2,04125e-4}{\newton}\right)^2 + \left(\SI{3.53554e-4}{\newton}\right)^2 \right. \notag \\
+				&~~~+ \left. \left(\frac{\SI{0.07983}{\newton} - \SI{0.05375}{\newton}}{\SI{30,99375}{\milli\meter}}\SI{0.0125}{\milli\meter}\right)^2 \right)^{\nicefrac{1}{2}} \notag \\
+				&= \SI{1.049e-6}{\newton\per\milli\meter}
+			\end{align}
+			Der Werte von $\pi$ direkt aus dem Taschenrechner wurde hier benutzt. Werte mit mehr signifikante Ziffern wurden hier auch benutzt, um mögliche Rundungsfehler zu vermeiden.
+
+			Daraus folgt, dass $\sigma_w = \SI{6.70(11)e-6}{\newton\per\milli\meter}$.
+
+		\subsection{Vergleich}
+			Der Temperatur des Labor ist ungefähr der Temperatur des Wassers im Teilversuch 3 $= \SI{21.10(5)}{\celsius} = \SI{294.10(5)}{\kelvin}$
+
+			Laut der Dortmunder Datenbank\footnote{DDBST GmbH, „Surface Tension of Water“, Dortmund Data Bank. [Online]. Verfügbar unter: \url{http://www.ddbst.de/en/EED/PCP/SFT_C174.php}. [Zugegriffen: 04-März-2020].} ist der Oberfläschespannung des Wassers wie folgt:
+
+			\begin{center}
+				\begin{tabular}{ll}
+					\toprule
+					Temperatur / \si{\kelvin} & $\sigma_w$ / \si{\milli\newton\per\meter} \\
+					\midrule
+					\num{293.15} & \num{72.7500} \\
+					\num{297.15} & \num{71.5000} \\
+					\bottomrule
+				\end{tabular}
+			\end{center}
+
+			Im Vergleich liegt der Literaturwert öffentsichlich nicht in dem Fehlerintervall unseres emprisches Wert $\sigma_w = \SI{6.70(11)e-6}{\newton\per\milli\meter} = \SI{6.70(11)}{\milli\newton\per\meter}$:
+			\begin{multicols}{2}
+				\noindent
+		        \begin{align*}
+		        	\text{Fehlerintervall:} \\
+		            \maxi{\sigma_{w\text{ (exp)}}} &= \SI{6.81}{\milli\newton\per\meter} \\
+		            \mini{\sigma_{w\text{ (exp)}}} &= \SI{6.59}{\milli\newton\per\meter}
+		        \end{align*}
+		        \begin{align*}
+		        	3 \times \text{Fehlerintervall:} \\
+		            \maxi{\sigma_{w\text{ (exp)}}} &= \SI{7.03}{\milli\newton\per\meter} \\
+		            \mini{\sigma_{w\text{ (exp)}}} &= \SI{6.37}{\milli\newton\per\meter}
+		        \end{align*}
+		    \end{multicols}
+
+		    Das Ergebnis $\sigma_{w\text{ (exp)}}$ und der Vergleichwert unterscheiden sich signifikant voneinander. 
+
+		    Dieses Unterschied kann vermutlich auf zwei Gründen zurückgeführt werden:
+		    \begin{itemize}
+		    	\item Ungenauigkeiten bei Messung
+
+		    	Es könnte sein, dass die Fehler aller Messungen deutlich unterschätzt waren, besonders bei der Messung des Durchmessers des Aluminiumrings. Da der Ring eine endliche Dicke hat, könnte es auch sein, dass das vorgeschlagene Modell die physikalische Situation nicht vollständig beschreiben kann. Daraus entstehen dann Fehler bei der Rechnung. 
+
+		    	\item Steuerung der Parameter
+
+		    	Es könnte auch sein, dass die Parameter nicht richtig gesteuert bzw. berücksichtigt wurden. Die Temperatur des Wassers war beispielsweise nicht gemessen. Der Ring könnte auch noch Ethanol haben, oder waren einfach nicht genug gesäubert. Daraus entstehen dann Fehler bei der Messung, die nicht berücksichtigt waren.
+		    \end{itemize}

@@ -1,0 +1,22 @@
+# Using the following parameters ...
+# ROI_filename: .\F2_AAYS_TV2.ROI
+# data_filename: .\F2_AAYS_TV2_100 Messungen.Lis
+# number_of_measurements: 100
+# timestep: 2
+# ROI_min: 125
+# ROI_max: 813
+#
+#
+# stats file:
+# channels     1024
+# region begin 125
+# region end   813
+# passes       100
+# imp occurence
+0 6
+1 22
+2 31
+3 20
+4 14
+5 5
+6 2

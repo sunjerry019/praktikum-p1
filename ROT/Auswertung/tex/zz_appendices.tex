@@ -1,0 +1,168 @@
+\section{\gnuplot{} Quellcode zur Auswertung von Teilversuch 2}
+    \label{appdx:gnuplotTV2}
+    
+    \gnuplot{} Code für Abbildung \ref{fig:stoppuhr}
+    {  
+        % % Surpress "errors" in minted
+        % https://tex.stackexchange.com/a/289068
+        \renewcommand{\fcolorbox}[4][]{#4}
+        \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{gnuplot}
+            set term epscairo font "Linux Libertine, 14" size 5in, 4in
+            set output "maxwell.eps"
+            set decimalsign locale 'de_DE.UTF-8'
+
+            set title "Zusammenhang zwischen Schwingungsdauer und maximaler Höhe\n(Nach Augenmaß)"
+            set xlabel "Quadrate der Schwingungsdauer (s^2)"
+            set ylabel "Höhe (mm)"
+            set key left top
+
+            f(x) = m*x + c
+
+            # (x, y, xdelta, ydelta)
+            fit f(x) "maxwell.dat" u ($2**2):1:($2*2*(0.5)):(5) xyerrors via m,c
+
+            set yrange [200:900]
+            set xrange [15:125]
+
+            t = gprintf("%.3f", m)."x + ".gprintf("%.3f", c)
+            plot f(x) title t, "maxwell.dat" u ($2**2):1:($2*2*(0.5)):(5) with xyerrorbars pointtype 0 title "maxwell.dat"
+        \end{minted}
+    }
+    mit \texttt{maxwell.dat}:
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
+        # Höhe  T
+        775 10,57
+        715 9,53
+        665 10,1
+        647 8,92
+        583 8,89
+        550 8,76
+        515 7,79
+        485 7,59
+        465 7,92
+        430 7,4
+        405 7,03
+        387 6,52
+        365 6,41
+        345 6,55
+        330 5,64
+        315 6,07
+        300 5,3
+        296 5,48
+        275 5,04
+        260 4,69
+        250 4,76
+    \end{minted}
+
+\section{\texttt{Python} Code zur Bestimmung des Fehlers $\Delta R_J$}
+    \label{appdx:pythonTV2}
+
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{python}
+        #!/usr/bin/env python3
+
+        import numpy as np
+
+        def rj(l1, l2, l3, l4, r1, r2, r3, r4, r5):
+            return np.sqrt((0.5)*((l1*r1**4 + l2*(r2**4-r1**4) + l3*(r3**4-r2**4+r5**4-r4**4) + l4*(r4**4-r3**4))/(l1*r1**2 + l2*(r2**2-r1**2) + l3*(r3**2-r2**2+r5**2-r4**2) + l4*(r4**2-r3**2))))
+
+        def parameterize(*args):
+            return args
+
+        maxWert = 0
+        minWert = 100
+        step = 0.01
+
+        for i1 in range(-5,6,2):
+            for i2 in range(-5,6,2):
+                for i3 in range(-5,6,2):
+                    for i4 in range(-5,6,2):
+                        for i5 in range(-5,6,2):
+                            for i6 in range(-5,6,2):
+                                for i7 in range(-5,6,2):
+                                    for i8 in range(-5,6,2):
+                                        for i9 in range(-5,6,2):
+                                            currWert = rj(141.675 + i1*step, 63.275 + i2*step, 6.575 + i3*step, 2.025 + i4*step, 4.05 + i5*step, 6.525 + i6*step, 10.25 + i7*step, 67.85 + i8*step, 87.05 + i9*step)
+                                            params = parameterize(141.675 + i1*step, 63.275 + i2*step, 6.575 + i3*step, 2.025 + i4*step, 4.05 + i5*step, 6.525 + i6*step, 10.25 + i7*step, 67.85 + i8*step, 87.05 + i9*step)
+
+                                            if currWert > maxWert:
+                                                maxWert = currWert
+                                                maxParams = params
+                                            if currWert < minWert:
+                                                minWert = currWert
+                                                minParams = params
+
+        print("Max Value\t", maxWert)
+        print("Max Params\t", maxParams)
+        print("Min Value\t", minWert)
+        print("Min Params\t", minParams)
+    \end{minted}
+
+    Rohausgabe:
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
+        Max Value    65.50959631684215
+        Max Params   (141.625, 63.225, 6.625, 1.9749999999999999, 4.0, 6.4750000000000005, 10.2, 67.8, 87.1)
+        Min Value    64.94975893345266
+        Min Params   (141.72500000000002, 63.324999999999996, 6.525, 2.0749999999999997, 4.1, 6.575, 10.3, 67.89999999999999, 87.0)
+    \end{minted}
+    Wertetabelle zur Vergleichung:
+    \begin{multicols}{2}
+        \begin{center}
+            \begin{tabular}{lrl}
+                \toprule
+                Variable & Wert \\
+                \midrule
+                $L_1$ & \SI{141,675(50)}{\milli\meter} \\
+                $L_2$ & \SI{63,275(50)}{\milli\meter} \\
+                $L_3$ & \SI{6.575(50)}{\milli\meter} \\
+                $L_4$ & \SI{2.025(50)}{\milli\meter} \\
+                \bottomrule
+            \end{tabular}
+        \end{center}
+        \begin{center}
+            \begin{tabular}{lrl}
+                \toprule
+                Variable & Wert \\
+                \midrule
+                $R_1$ & \SI{4,05(5)}{\milli\meter} \\
+                $R_2$ & \SI{6.525(50)}{\milli\meter} \\
+                $R_3$ & \SI{10.25(5)}{\milli\meter} \\
+                $R_4$ & \SI{67.85(5)}{\milli\meter} \\
+                $R_5$ & \SI{87.05(5)}{\milli\meter} \\
+                \bottomrule
+            \end{tabular}
+        \end{center}
+    \end{multicols}
+
+\section{\texttt{Python} Code zur Bestimmung des Wertes und Fehlers von $J_d$ im Teilversuch 3}
+    \label{appdx:pythonJd}
+
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{python}
+        #!/usr/bin/env python3
+        import numpy as np
+
+        # x. y, z
+        L      = np.array([5.115e-2, 7.315e-2, 10.250e-2])
+        deltaL = 0.005e-2
+        J      = np.array([3.95523e-3, 3.29182e-3, 2.04429e-3])
+        deltaJ = np.array([3.177e-5, 4.851e-5, 5.736e-5])
+
+        r = np.dot(L, L)
+
+        vecL2 = np.multiply(L, L)
+        vec1 = np.multiply(J, r - vecL2)
+
+        def Jd():
+            return (1/r)*(np.dot(J, vecL2))
+
+        def deltaJd():
+            return (1/r)*np.sqrt(((4*deltaL**2)/(r**2))*(np.dot(vec1, L))**2 + (np.dot(vecL2, deltaJ))**2)
+
+        print("J_d Wert\t", Jd())
+        print("Delta J_d\t", deltaJd())
+    \end{minted}
+
+    Rohausgabe:
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
+        J_d Wert     0.0026762804092092477
+        Delta J_d    5.122652638090954e-05
+    \end{minted}

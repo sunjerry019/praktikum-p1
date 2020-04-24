@@ -1,0 +1,37 @@
+decimal_sign in locale is ,
+iter      chisq       delta/lim  lambda   m             c            
+   0 4.7193637576e+04   0.00e+00  4.32e+00    1.000000e+00   1.000000e+00
+   1 2.6988208630e+01  -1.75e+08  4.32e-01    8.329246e+00   1.520315e+00
+   2 2.3264022500e+01  -1.60e+04  4.32e-02    8.626536e+00   2.483101e+00
+   3 1.2904622742e+01  -8.03e+04  4.32e-03    7.695361e+00   5.247937e+01
+   4 7.6082785127e+00  -6.96e+04  4.32e-04    6.517312e+00   1.154771e+02
+   * 7.6346315482e+00   3.45e+02  4.32e-03    6.505466e+00   1.161109e+02
+   * 7.6344342840e+00   3.43e+02  4.32e-02    6.505551e+00   1.161063e+02
+   * 7.6232369476e+00   1.96e+02  4.32e-01    6.510468e+00   1.158430e+02
+   * 7.6086403104e+00   4.76e+00  4.32e+00    6.517143e+00   1.154857e+02
+   * 7.6082947985e+00   2.14e-01  4.32e+01    6.517305e+00   1.154772e+02
+   * 7.6082788596e+00   4.56e-03  4.32e+02    6.517312e+00   1.154771e+02
+   * 7.6082785162e+00   4.62e-05  4.32e+03    6.517312e+00   1.154771e+02
+   * 7.6082785127e+00   4.65e-07  4.32e+04    6.517312e+00   1.154771e+02
+   * 7.6082785127e+00   2.35e-08  4.32e+05    6.517312e+00   1.154771e+02
+   5 7.6082785127e+00  -1.87e-09  4.32e+04    6.517312e+00   1.154771e+02
+iter      chisq       delta/lim  lambda   m             c            
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 7.60828
+rel. change during last iteration : -1.86781e-14
+
+degrees of freedom    (FIT_NDF)                        : 20
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.616777
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.380414
+p-value of the Chisq distribution (FIT_P)              : 0.994158
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+m               = 6.51731          +/- 0.257        (3.943%)
+c               = 115.477          +/- 12.23        (10.59%)
+
+correlation matrix of the fit parameters:
+                m      c      
+m               1.000 
+c              -0.888  1.000

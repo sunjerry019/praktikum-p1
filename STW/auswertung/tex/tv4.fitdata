@@ -1,0 +1,38 @@
+decimal_sign in locale is ,
+iter      chisq       delta/lim  lambda   omeganull     beta          A            
+   0 1.5459191605e+03   0.00e+00  5.24e+02    8.377000e+02   7.400000e+00   3.000000e+00
+   1 9.2503665877e+02  -6.71e+04  5.24e+01    8.391436e+02   7.491953e+00   2.953878e+00
+   2 7.1802103757e+02  -2.88e+04  5.24e+00    8.358934e+02   7.792274e+00   2.847305e+00
+   * 7.2885658544e+02   1.49e+03  5.24e+01    8.355517e+02   8.273782e+00   2.856425e+00
+   * 7.2425292189e+02   8.60e+02  5.24e+02    8.355605e+02   7.982327e+00   2.839234e+00
+   * 7.2219527922e+02   5.78e+02  5.24e+03    8.355526e+02   7.795895e+00   2.845759e+00
+   * 7.1837086895e+02   4.87e+01  5.24e+04    8.357939e+02   7.792311e+00   2.847287e+00
+   * 7.1802159310e+02   7.74e-02  5.24e+05    8.358921e+02   7.792274e+00   2.847305e+00
+   * 7.1802104256e+02   6.95e-04  5.24e+06    8.358934e+02   7.792274e+00   2.847305e+00
+   * 7.1802103762e+02   6.94e-06  5.24e+07    8.358934e+02   7.792274e+00   2.847305e+00
+   * 7.1802103757e+02   6.97e-08  5.24e+08    8.358934e+02   7.792274e+00   2.847305e+00
+   * 7.1802103757e+02   4.28e-10  5.24e+09    8.358934e+02   7.792274e+00   2.847305e+00
+   * 7.1802103757e+02   1.74e-10  5.24e+10    8.358934e+02   7.792274e+00   2.847305e+00
+   3 7.1802103757e+02   0.00e+00  5.24e+09    8.358934e+02   7.792274e+00   2.847305e+00
+iter      chisq       delta/lim  lambda   omeganull     beta          A            
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 718.021
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 22
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 5.71291
+variance of residuals (reduced chisquare) = WSSR/ndf   : 32.6373
+p-value of the Chisq distribution (FIT_P)              : 0
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+omeganull       = 835.893          +/- 1.46         (0.1746%)
+beta            = 7.79227          +/- 1.02         (13.09%)
+A               = 2.8473           +/- 0.1317       (4.626%)
+
+correlation matrix of the fit parameters:
+                omegan beta   A      
+omeganull       1.000 
+beta           -0.024  1.000 
+A              -0.098  0.484  1.000
